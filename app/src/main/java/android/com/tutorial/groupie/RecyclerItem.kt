@@ -16,7 +16,6 @@ class RecyclerItem(@ColorInt private val color : Int, private val num: Int) : It
             cardView.setCardBackgroundColor(color)
             cardView.number.text = num.toString()
         }
-
     }
 
     override fun getLayout(): Int  = R.layout.item_layout
