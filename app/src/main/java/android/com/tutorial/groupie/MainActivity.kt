@@ -1,17 +1,16 @@
 package android.com.tutorial.groupie
 
+import android.com.tutorial.R
 import android.graphics.Color
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.xwray.groupie.ExpandableGroup
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
-import android.com.tutorial.R
-
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -21,10 +20,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val listedNumbs = getColoredNumbs(6)
         val gridNums = getColoredNumbs(12)
         val groupAdapter = GroupAdapter<ViewHolder>().apply {
-            spanCount = 3
+            spanCount = 2
         }
         recycler_view.apply {
             layoutManager = GridLayoutManager(this@MainActivity, groupAdapter.spanCount).apply {
@@ -32,18 +32,14 @@ class MainActivity : AppCompatActivity() {
             }
             adapter = groupAdapter
         }
-        ExpandableGroup(ExpandableItem("First Section"), true).apply {
+        ExpandableGroup(ExpandableGroupItem("First Section"), true).apply {
             add(Section(listedNumbs))
             groupAdapter.add(this)
         }
-        ExpandableGroup(ExpandableItem("Second secondSection"), false).apply {
+        ExpandableGroup(ExpandableGroupItem("Second secondSection"), false).apply {
             secondSection.addAll(gridNums)
             add(secondSection)
             groupAdapter.add(this)
-        }
-        fab.setOnClickListener{
-            gridNums.shuffle()
-            secondSection.update(gridNums)
         }
     }
     private fun getColoredNumbs(count: Int): MutableList<RecyclerItem>{

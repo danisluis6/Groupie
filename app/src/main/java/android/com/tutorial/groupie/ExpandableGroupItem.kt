@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.expandable_item.*
 /**
  * Created by ${KhalidToak} on 3/11/2019.
  */
-class ExpandableItem(private val title : String) : Item(), ExpandableItem {
+class ExpandableGroupItem(private val title : String) : Item(), ExpandableItem {
     //declare  an expandable group
     private lateinit var expandableGroup: ExpandableGroup
     override fun bind(viewHolder: ViewHolder, position: Int) {
