@@ -6,6 +6,7 @@ import android.com.tutorial.groupie.viewholder.ViewItem
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.xwray.groupie.GroupAdapter
@@ -39,7 +40,16 @@ class MainActivity : AppCompatActivity() {
                 val rand = Random.nextInt(50)+20
                 ViewItem(User("Luis is writing", "$rand years old", R.drawable.camera))
             })
+//            itemAdapter.update(generateViewItems(null));
         }
+    }
+
+    private fun generateViewItems(list : List<User>): MutableList<ViewItem> {
+        val mutableList = mutableListOf<ViewItem>()
+        for (i in 0..list.size) {
+            mutableList.add(ViewItem(list[i]))
+        }
+        return mutableList
     }
 
 
