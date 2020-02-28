@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.random.Random
 
-
+// https://www.materialpalette.com/light-blue/cyan
+// https://material.io/design/color/the-color-system.html
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,16 +23,25 @@ class MainActivity : AppCompatActivity() {
 
         val itemAdapter = GroupAdapter<GroupieViewHolder>()
 
-        itemAdapter.add(ViewItem(User("Emma Wilson", "23 years old", R.drawable.camera)))
-        itemAdapter.add(ViewItem(User("Emma Wilson", "23 years old", R.drawable.camera)))
-        itemAdapter.add(ViewItem(User("Emma Wilson", "23 years old", R.drawable.camera)))
+        itemAdapter.addAll(MutableList(10) {
+            val rand = Random.nextInt(90)+10
+            ViewItem(User("Emma Wilson", "$rand years old", R.drawable.camera))
+        })
 
         recycler_view.apply {
             layoutManager = LinearLayoutManager(applicationContext)
             setHasFixedSize(true)
             adapter = itemAdapter
         }
+
+        fab.setOnClickListener{
+            itemAdapter.update(MutableList(5) {
+                val rand = Random.nextInt(50)+20
+                ViewItem(User("Luis is writing", "$rand years old", R.drawable.camera))
+            })
+        }
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
