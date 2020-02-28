@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
                 val rand = Random.nextInt(50)+20
                 ViewItem(User("Luis is writing", "$rand years old", R.drawable.camera))
             })
+            // it.listIterator().asSequence().toList()
 //            itemAdapter.update(generateViewItems(null));
         }
     }
