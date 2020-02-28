@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         itemAdapter.add(ViewItem(User("Emma Wilson", "23 years old", R.drawable.camera)))
 
         recycler_view.apply {
-            layoutManager = LinearLayoutManager(applicationContext)
+            layoutManager = LinearLayoutManager(applicationContext) as RecyclerView.LayoutManager?
             setHasFixedSize(true)
             adapter = itemAdapter
         }
