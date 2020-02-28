@@ -28,7 +28,7 @@ android {
 }
 
 ext {
-    groupie = "2.3.0"
+    groupie = "2.7.2"
 }
 
 dependencies {

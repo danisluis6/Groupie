@@ -8,9 +8,8 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.kotlinandroidextensions.ViewHolder
+import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -20,14 +19,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val itemAdapter = GroupAdapter<ViewHolder>()
+        val itemAdapter = GroupAdapter<GroupieViewHolder>()
 
         itemAdapter.add(ViewItem(User("Emma Wilson", "23 years old", R.drawable.camera)))
         itemAdapter.add(ViewItem(User("Emma Wilson", "23 years old", R.drawable.camera)))
         itemAdapter.add(ViewItem(User("Emma Wilson", "23 years old", R.drawable.camera)))
 
         recycler_view.apply {
-            layoutManager = LinearLayoutManager(applicationContext) as RecyclerView.LayoutManager?
+            layoutManager = LinearLayoutManager(applicationContext)
             setHasFixedSize(true)
             adapter = itemAdapter
         }

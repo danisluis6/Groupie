@@ -2,8 +2,8 @@ package android.com.tutorial.groupie.viewholder
 
 import android.com.tutorial.R
 import android.com.tutorial.groupie.entities.User
+import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
-import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.view_item.*
 
 /**
@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.view_item.*
  */
 class ViewItem(private val user: User) : Item() {
 
-    override fun bind(viewHolder: ViewHolder, position: Int) {
+    override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.apply {
             viewHolder.person_photo.setImageResource(user.idRes)
             viewHolder.person_name.text = user.name
